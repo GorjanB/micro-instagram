@@ -1,0 +1,69 @@
+<div class="content h-100">
+    <div class="row w-100 h-100">
+
+        <div class="col-md-3 sidebar">
+            <aside>
+                <div class="sidebar-background">
+                    <div class="content" align="center">
+                        <p *ngIf="!photo" class="error">Error: There was a problem loading the photo! Please try again later.</p>
+                       <div id="info" *ngIf="photo"> 
+                        <h3>{{photo?.title}}</h3>
+                        <h4>{{photoHeight}} x {{photoWidth}}</h4>
+                        <div class="id-card container text-center">
+                            <div class="row">
+                                <div class="col align-items-center">
+                                    <p>photo id: {{photo?.id}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col align-items-center">
+                                    <p>album id: {{photo?.albumId}}</p>
+                                </div>
+                            </div>
+                        </div>
+                       </div>
+                        <button id="edit-button" [disabled]="isLoading" (click)="editClicked()" type="button" class="btn btn-dark">Edit</button>
+                        <button id="delete-button" [disabled]="isLoading" (click)="deleteClicked()" type="button" class="btn btn-dark">Delete</button>
+
+                        <!-- Edit Photo Form-->
+                        <form *ngIf="photo" [formGroup]="profileForm" (ngSubmit)="saveProfile(profileForm.value)"
+                        class="save-confirm" autocomplete="off" novalidate [hidden]="!editMode">
+                            <div align="center" class="form-group">
+                                <label for="title">Title</label>
+                                <em *ngIf="title.invalid" class="error">Required</em>
+                                <input formControlName="title" id="title" type="text" class="form-control"
+                                placeholder="Photo Title...">
+                                <label for="photoId">Photo ID</label>
+                                <em *ngIf="photoId.invalid && photoId.errors?.pattern" class="error">not a whole number</em>
+                                <em *ngIf="photoId.invalid && photoId.errors?.required" class="error">Enter number</em>
+                                <input formControlName="photoId" id="photoId" type="text" style="float:left"class="form-control"
+                                placeholder="id" maxlength="8">
+                                <br>
+                                <label for="albumId">Album ID</label>
+                                <em *ngIf="albumId.invalid && albumId.errors?.pattern" class="error">not a whole number</em>
+                                <em *ngIf="albumId.invalid && albumId.errors?.required" class="error">Enter number</em>
+                                <input formControlName="albumId" id="albumId" name="albumId" type="text" class="form-control"
+                                placeholder="album id" maxlength="8">
+                            </div>
+                            <p *ngIf="duplicatePhotoIdError" class="error">Error: There is allready a photo with the chosen id, enter a unique photo ID</p>
+                            <p *ngIf="faildToSaveError" class="error">Error: Faild to save the changes. Try again later.</p>
+                            <mat-spinner *ngIf="isLoading"></mat-spinner>
+                            <button type="submit" [disabled]="isLoading" class="btn btn-dark">Save</button>
+                        </form>
+
+                        <!--Delete Photo Confirmation-->
+                        <div *ngIf="photo" class="delete-confirm" [hidden]="!deleteMode">
+                          <mat-spinner *ngIf="isLoading"></mat-spinner>
+                          <p>Are you sure you want to delete this photo?</p>
+                          <button type="button" [disabled]="isLoading" (click)="deletePhoto()"class="btn btn-dark">Yes</button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <div class="col-md-9" align="center">
+            <img #img src="{{photo?.url}}">
+        </div>
+    </div>
+</div>

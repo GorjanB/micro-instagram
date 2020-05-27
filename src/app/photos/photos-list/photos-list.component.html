@@ -1,0 +1,14 @@
+<div id="thumbs" class="thumbs-container thumbs-listing infinite-scroll">
+    <section *ngIf="photos"  class="thumb-listing-page">
+        <ul>
+            <li *ngFor="let item of [].constructor(itemCount); let i = index">
+                <figure class="thumb thumb-sfw thumb-general">
+                    <img alt="loading" title="{{photos[i].title}}" data-src="{{photos[i].thumbnailUrl}}" src="{{photos[i].thumbnailUrl}}">
+                    <a class="preview" (click)="onClick(photos[i].id)" style="cursor: pointer;"
+                    placement="bottom" ngbTooltip="{{photos[i].title}}" target="_blank"></a>
+                </figure>
+            </li>
+        </ul>
+    </section>
+    <p *ngIf="!photos" class="error" align="center">Faild to load photos! Pleas try again later.</p>
+</div>

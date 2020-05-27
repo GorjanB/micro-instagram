@@ -1,0 +1,33 @@
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+figcaption {
+    text-align: center;
+}
+
+.thumb-listing li, .thumb-listing-page li {
+    display: inline-block;
+    list-style-type: none;
+    margin: 5px;
+}
+.thumb { 
+    position: relative;
+}
+.thumb>img {
+    border-radius: 3px;
+}
+.thumb>.preview {
+    z-index: 110;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+

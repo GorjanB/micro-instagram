@@ -1,0 +1,72 @@
+img {
+    margin: auto;
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+em.error {
+    float: right;
+}
+
+#id-card{
+    margin-top: 5px
+}
+#new-button {
+    color: seagreen;
+    margin-right: 5px;
+}
+#edit-button {
+    color: #e73;
+    margin-right: 5px;
+}
+#delete-button {
+    color: #d55;
+}
+#edit-button:hover {
+    background-color: #a70;
+}
+#new-button:hover {
+    background-color: #6eeba4
+}
+#delete-button:hover {
+    background-color: #a55;
+}
+
+.sidebar {
+    border-right-style: solid;
+    border-color: #292929;
+    margin-left: auto;
+}
+.form-control {
+    background-color: #1d2124;
+    border-color: #1d2124;
+    color: aliceblue;
+}
+.save-confirm {
+    margin-top: 5px;
+}
+.save-confirm label {
+    float: left;
+    margin-left: 5px;
+}
+.save-confirm button {
+    color: #ad3;
+    margin-top: 10px;
+}
+.save-confirm button:hover {
+    background-color: #bbdd33;
+    color: aliceblue;
+}
+.delete-confirm {
+    margin-top: 40px;
+}
+.delete-confirm button {
+    background-color: #a71d2a;
+}
+.delete-confirm button:hover{
+    background-color: #f3091e;
+}
+
